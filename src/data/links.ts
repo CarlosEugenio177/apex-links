@@ -39,14 +39,7 @@ export const linksList: LinkItem[] = [
     id: "grupo-whatsapp",
     title: "Grupo WhatsApp",
     description: "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod.",
-    url: "https://chat.whatsapp.com/seu-link-aqui",
+    url: process.env.NEXT_PUBLIC_LINKWPP  || "",
     icon: "whatsapp",
-  },
-  {
-    id: "canal-telegram",
-    title: "Canal Telegram",
-    description: "Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod.",
-    url: "https://t.me/seu-link-aqui",
-    icon: "telegram",
-  },
+  }
 ]
