@@ -8,11 +8,13 @@ interface LinkCardProps {
 }
 
 export function LinkCard({ item }: LinkCardProps) {
+  const isExternalLink = /^https?:\/\//.test(item.url || "")
+
   return (
     <a
-      href={item.url}
+      href={item.url || "#"}
       target="_blank"
-      rel="noopener noreferrer"
+      rel={isExternalLink ? "noopener noreferrer" : undefined}
       className="group relative w-full flex items-center justify-between p-4 rounded-xl bg-white dark:bg-[#16181A] text-slate-900 dark:text-neutral-100 border border-slate-200/90 dark:border-[#272A30] shadow-2xs hover:border-[#c30000]/60 dark:hover:border-[#c30000]/60 hover:shadow-xs transition-all duration-150 active:scale-[0.99] min-h-[60px]"
     >
       {/* Left: Icon + Title & Description */}
