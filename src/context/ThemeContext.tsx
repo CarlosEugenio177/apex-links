@@ -16,9 +16,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       if (saved === "dark" || saved === "light") {
         return saved
       }
-      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        return "dark"
-      }
+      return "dark"
     } catch {
       // ignore
     }
@@ -29,8 +27,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const root = document.documentElement
     if (theme === "dark") {
       root.classList.add("dark")
+      root.classList.remove("light")
     } else {
       root.classList.remove("dark")
+      root.classList.add("light")
     }
     try {
       localStorage.setItem("apex_theme_v1", theme)

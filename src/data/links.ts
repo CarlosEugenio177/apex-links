@@ -24,24 +24,20 @@ export interface ProfileData {
 export const profileData: ProfileData = {
   name: "APEX Clube de Ofertas",
   handle: "@apexclubedeofertas",
-  bio: "COPY",
-  logoUrl: "/apex_logo.png",
+  bio: "No topo com facilidade.",
+  logoUrl: "/apex_logo.svg",
   socials: {
-    instagram: "https://instagram.com",
-    telegram: "https://t.me",
-    tiktok: "https://tiktok.com",
+    instagram: "https://instagram.com/apexclubedeofertas",
   },
 }
 
-const whatsappGroupUrl =
-  import.meta.env.VITE_LINKWPP || "https://chat.whatsapp.com/seu-link-aqui"
+export const whatsappGroupUrl = import.meta.env.VITE_LINKWPP || "https://chat.whatsapp.com/FiDihiAcSR4A11jPrHOLuB"
 
-// Adicione ou edite os links diretamente neste array
 export const linksList: LinkItem[] = [
   {
     id: "grupo-whatsapp",
     title: "Grupo WhatsApp",
-    description: "COPY",
+    description: "Ofertas e achadinhos compartilhados na comunidade.",
     url: whatsappGroupUrl,
     icon: "whatsapp",
   }
