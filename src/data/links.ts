@@ -32,13 +32,13 @@ export const profileData: ProfileData = {
   },
 }
 
-export const whatsappGroupUrl = import.meta.env.VITE_LINKWPP || "https://chat.whatsapp.com/FiDihiAcSR4A11jPrHOLuB"
+export const whatsappGroupUrl = import.meta.env.VITE_LINKWPP || "https://chat.whatsapp.com/J2AR9AZNHvNG8hhxYqOm3C"
 
 export const linksList: LinkItem[] = [
   {
     id: "grupo-whatsapp",
     title: "Grupo WhatsApp",
-    description: "Ofertas e achadinhos compartilhados na comunidade.",
+    description: "Ofertas monitoradas, cupons testados e oportunidades verificadas.",
     url: whatsappGroupUrl,
     icon: "whatsapp",
   }
