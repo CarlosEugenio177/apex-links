@@ -2,12 +2,12 @@ import { useState } from "react"
 import { ArrowDownRight, ArrowRight, Check, ChevronDown, Cpu, Heart, Menu, Moon, ShieldCheck, Sparkles, Sun, Zap } from "lucide-react"
 import { ThemeProvider, useTheme } from "./context/ThemeContext"
 import { InstagramIcon, WhatsAppIcon } from "./components/Icons"
-import { profileData, whatsappGroupUrl } from "./data/links"
+import { profileData } from "./data/links"
 
 const interests = [
-  { id: "tech", label: "Tech & gadgets", icon: Cpu, eyebrow: "TECNOLOGIA ÚTIL", title: "Tech sem pagar mais só pelo hype.", copy: "Gadgets, acessórios e produtos que resolvem problemas reais. Compare vendedor, frete e garantia antes de fechar.", tags: ["Gadgets", "Acessórios", "Casa inteligente"] },
-  { id: "style", label: "Estilo & cuidado", icon: Heart, eyebrow: "ESTILO & AUTOCUIDADO", title: "Seu cuidado também pode caber no bolso.", copy: "Achadinhos de moda, beleza e autocuidado com espaço para comparar preço, tamanho e avaliação.", tags: ["Moda", "Beleza", "Autocuidado"] },
-  { id: "fitness", label: "Fitness & bem-estar", icon: Zap, eyebrow: "ROTINA EM MOVIMENTO", title: "Mais rotina. Menos compra no impulso.", copy: "Equipamentos, acessórios e itens de bem-estar. Em suplementos, confira fabricante, rótulo e procedência.", tags: ["Treino", "Bem-estar", "Suplementos"] },
+  { id: "tech", label: "Tech & gadgets", icon: Cpu, eyebrow: "TECNOLOGIA ÚTIL", title: "Tech sem pagar mais só pelo hype.", copy: "Gadgets, acessórios e produtos que resolvem problemas reais. Compare vendedor, frete e garantia antes de fechar.", tags: ["Gadgets", "Acessórios", "Casa inteligente"], whatsappUrl: "https://chat.whatsapp.com/GEI5ZeFK1YyEtMhnGmQL01" },
+  { id: "style", label: "Estilo & cuidado", icon: Heart, eyebrow: "ESTILO & AUTOCUIDADO", title: "Seu cuidado também pode caber no bolso.", copy: "Achadinhos de moda, beleza e autocuidado com espaço para comparar preço, tamanho e avaliação.", tags: ["Moda", "Beleza", "Autocuidado"], whatsappUrl: "https://chat.whatsapp.com/DUGPpiboUYf8HVBhEYdFSy" },
+  { id: "fitness", label: "Fitness & bem-estar", icon: Zap, eyebrow: "ROTINA EM MOVIMENTO", title: "Mais rotina. Menos compra no impulso.", copy: "Equipamentos, acessórios e itens de bem-estar. Em suplementos, confira fabricante, rótulo e procedência.", tags: ["Treino", "Bem-estar", "Suplementos"], whatsappUrl: "https://chat.whatsapp.com/DUUexM31KIcGHMs87F2ibs" },
 ]
 
 const faqs = [
@@ -26,11 +26,11 @@ function MainContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(0)
   const ActiveInterestIcon = activeInterest.icon
 
-  return <div className="apex-site">
+  return <div className="apex-site" data-active-interest={activeInterest.id}>
     <div className="announcement"><span className="announcement-dot" /> CURADORIA DE OFERTAS · COMPRA COM MAIS INTENÇÃO <span className="announce-divider">/</span> <span className="announce-code">APX—001</span></div>
     <header className="topbar">
       <a href="#inicio" className="brand" aria-label="Apex Offers Club, início"><span className="brand-icon">A<span>×</span></span><span className="brand-name">APEX <b>OFFERS CLUB</b></span></a>
-      <nav className="topnav" aria-label="Navegação principal"><a href="#radar">Seu radar</a><a href="#manifesto">O método</a><a href="#faq">FAQ</a><ThemeToggle /><a className="nav-cta" href={whatsappGroupUrl} target="_blank" rel="noreferrer">Entrar na comunidade <ArrowRight size={14} /></a></nav>
+      <nav className="topnav" aria-label="Navegação principal"><a href="#radar">Seu radar</a><a href="#manifesto">O método</a><a href="#faq">FAQ</a><ThemeToggle /><a className="nav-cta" href={activeInterest.whatsappUrl} target="_blank" rel="noreferrer">Entrar em {activeInterest.label} <ArrowRight size={14} /></a></nav>
       <a className="mobile-menu" href="#radar" aria-label="Ir para categorias"><Menu size={20} /></a>
     </header>
 
@@ -41,7 +41,7 @@ function MainContent() {
           <div className="hero-status"><span className="status-pulse" /> RADAR APEX <span className="status-slash">/</span> CURADORIA EM COMUNIDADE</div>
           <h1>Oportunidade<br />boa não faz<br /><em>barulho.</em></h1>
           <p className="hero-lede">A gente filtra o excesso para você encontrar o que vale olhar. Ofertas, achadinhos e informação para comprar com mais cabeça.</p>
-          <div className="hero-buttons"><a className="button-primary" href={whatsappGroupUrl} target="_blank" rel="noreferrer"><WhatsAppIcon className="w-5 h-5" /> Entrar no grupo <ArrowRight size={17} /></a><a className="button-ghost" href="#radar">Explorar categorias <ArrowDownRight size={17} /></a></div>
+          <div className="hero-buttons"><a className="button-primary" href={activeInterest.whatsappUrl} target="_blank" rel="noreferrer"><WhatsAppIcon className="w-5 h-5" /> Entrar em {activeInterest.label} <ArrowRight size={17} /></a><a className="button-ghost" href="#radar">Explorar categorias <ArrowDownRight size={17} /></a></div>
           <div className="hero-footnote"><ShieldCheck size={15} /><span>Você escolhe. A decisão é sempre sua.</span></div>
         </div>
         <div className="hero-visual">
@@ -58,7 +58,7 @@ function MainContent() {
 
       <section className="source-strip" aria-label="Fontes de pesquisa de ofertas"><span className="source-label">ONDE A GENTE GARIMPA</span><span>mercado livre</span><i /><span className="shopee-word">Shopee</span><i /><span className="amazon-word">amazon</span><i /><span>lojas selecionadas</span><span className="source-note">Fontes de pesquisa — ofertas podem variar.</span></section>
 
-      <section className="radar-section" id="radar">
+      <section className="radar-section" id="radar" data-active-interest={activeInterest.id}>
         <div className="section-topline"><span className="eyebrow"><span className="eyebrow-mark">02</span> PERSONALIZE SEU RADAR</span><span className="section-line" /><span className="micro-label">INTERESSE ATUAL <b>{activeInterest.id.toUpperCase()}</b></span></div>
         <div className="radar-heading"><div><h2>Qual é a sua <em>vibe?</em></h2><p>Escolhe uma área. A página muda o foco — e você segue para a comunidade.</p></div><span className="radar-decoration">A<span>•</span></span></div>
         <div className="interest-tabs" role="tablist" aria-label="Escolha uma categoria de interesse">
@@ -67,9 +67,9 @@ function MainContent() {
         <article className="interest-panel" role="tabpanel" key={activeInterest.id}>
           <div className="panel-index">RADAR / {activeInterest.id.toUpperCase()}<span>● ATIVO</span></div>
           <div className="panel-content"><div className="panel-copy"><span className="panel-eyebrow">{activeInterest.eyebrow}</span><h3>{activeInterest.title}</h3><p>{activeInterest.copy}</p><div className="tag-list">{activeInterest.tags.map((tag) => <span className="interest-tag" key={tag}>{tag}</span>)}</div></div><div className="panel-art"><div className="panel-orbit"/><div className="panel-glyph"><ActiveInterestIcon size={52} strokeWidth={1.2} /></div><span className="panel-coordinate">AOC / {activeInterest.id.slice(0,3).toUpperCase()}</span><span className="panel-scan"/></div></div>
-          <div className="panel-bottom"><span><Check size={14} /> Você escolhe o que faz sentido</span><a href={whatsappGroupUrl} target="_blank" rel="noreferrer">Ver ofertas na comunidade <ArrowRight size={15} /></a></div>
+          <div className="panel-bottom"><span><Check size={14} /> Você escolhe o que faz sentido</span><a className="group-join" href={activeInterest.whatsappUrl} target="_blank" rel="noreferrer"><WhatsAppIcon className="group-join-icon" /><span>Entrar no grupo</span><b>{activeInterest.label}</b><ArrowRight className="group-join-arrow" size={15} /></a></div>
         </article>
-        <p className="group-note"><span>i</span> Hoje, todos os interesses levam ao grupo geral do WhatsApp. Os filtros ajudam a explorar a proposta por categoria.</p>
+        <p className="group-note"><span>i</span> Escolha uma categoria para entrar no grupo de WhatsApp correspondente.</p>
       </section>
 
       <section className="manifesto" id="manifesto">
@@ -80,11 +80,11 @@ function MainContent() {
 
       <section className="faq-section" id="faq"><div className="faq-title"><span className="eyebrow"><span className="eyebrow-mark">04</span> SEM MISTÉRIO</span><h2>Ficou com<br /><em>dúvida?</em></h2><p>O básico, direto ao ponto.</p></div><div className="faq-list">{faqs.map(({ q, a }, index) => <article className={`faq-item ${openFaq === index ? "open" : ""}`} key={q}><button type="button" aria-expanded={openFaq === index} onClick={() => setOpenFaq(openFaq === index ? null : index)}><span className="faq-number">0{index+1}</span><b>{q}</b><ChevronDown size={18} /></button>{openFaq === index && <p>{a}</p>}</article>)}</div></section>
 
-      <section className="final-cta"><div className="cta-grid"/><span className="cta-overline">A COMUNIDADE APEX ESTÁ A UM CLIQUE</span><h2>Menos caça.<br /><em>Mais achado.</em></h2><p>Entre no grupo e acompanhe as próximas oportunidades.</p><a href={whatsappGroupUrl} target="_blank" rel="noreferrer" className="button-light"><WhatsAppIcon className="w-5 h-5" /> Entrar no grupo de ofertas <ArrowRight size={17} /></a><span className="cta-foot">Preço, estoque e condições podem mudar na loja.</span></section>
+      <section className="final-cta"><div className="cta-grid"/><span className="cta-overline">A COMUNIDADE APEX ESTÁ A UM CLIQUE</span><h2>Menos caça.<br /><em>Mais achado.</em></h2><p>Entre no grupo e acompanhe as próximas oportunidades.</p><a href={activeInterest.whatsappUrl} target="_blank" rel="noreferrer" className="button-light"><WhatsAppIcon className="w-5 h-5" /> Entrar em {activeInterest.label} <ArrowRight size={17} /></a><span className="cta-foot">Preço, estoque e condições podem mudar na loja.</span></section>
     </main>
 
     <footer className="footer"><a className="footer-brand" href="#inicio"><span className="brand-icon">A<span>×</span></span> APEX OFFERS CLUB</a><p>Comprar com intenção muda o jogo.</p><div className="footer-bottom"><span>© {new Date().getFullYear()} APEX OFFERS CLUB</span><a href={profileData.socials.instagram} target="_blank" rel="noreferrer"><InstagramIcon className="w-4 h-4" /> Instagram</a><span className="footer-slogan">NO TOPO COM FACILIDADE.</span></div></footer>
-    <a className="mobile-sticky-cta" href={whatsappGroupUrl} target="_blank" rel="noreferrer"><WhatsAppIcon className="w-5 h-5" /> Entrar no grupo <ArrowRight size={16}/></a>
+    <a className="mobile-sticky-cta group-join" href={activeInterest.whatsappUrl} target="_blank" rel="noreferrer"><WhatsAppIcon className="w-5 h-5" /> <span>Entrar no grupo</span><b>{activeInterest.label}</b><ArrowRight className="group-join-arrow" size={16}/></a>
   </div>
 }
 
