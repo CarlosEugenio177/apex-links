@@ -70,9 +70,10 @@ button { font: inherit; }
 .group-join b { padding:4px 7px;color:inherit;background:#0a0b0e2b;border:1px solid #ffffff38;border-radius:2px;font-size:9px; }
 .group-join-arrow { flex:0 0 15px;transition:transform .2s; }
 .group-join:hover .group-join-arrow { transform:translateX(3px); }
-.mobile-sticky-cta.group-join { border-color:var(--red2); }
+.mobile-sticky-cta.group-join { display:none;border-color:var(--red2); }
 @media(max-width:650px) {
   .panel-bottom>a.group-join { min-height:48px;width:100%; }
+  .mobile-sticky-cta.group-join { display:flex; }
 }
 @media(prefers-reduced-motion:reduce) {
   .group-join,.group-join-arrow { transition:none; }
