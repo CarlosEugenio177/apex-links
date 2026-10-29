@@ -1,12 +1,13 @@
 import { useState } from "react"
-import { ArrowDownRight, ArrowRight, Check, ChevronDown, Cpu, Heart, Menu, Moon, ShieldCheck, Sparkles, Sun, Zap } from "lucide-react"
+import { ArrowDownRight, ArrowRight, Check, ChevronDown, Cpu, Heart, Menu, Moon, ShieldCheck, Shirt, Sparkles, Sun, Zap } from "lucide-react"
 import { ThemeProvider, useTheme } from "./context/ThemeContext"
-import { InstagramIcon, WhatsAppIcon } from "./components/Icons"
+import { InstagramIcon, TikTokIcon, WhatsAppIcon } from "./components/Icons"
 import { profileData } from "./data/links"
 
 const interests = [
   { id: "tech", label: "Tech & gadgets", icon: Cpu, eyebrow: "TECNOLOGIA ÚTIL", title: "Tech sem pagar mais só pelo hype.", copy: "Gadgets, acessórios e produtos que resolvem problemas reais. Compare vendedor, frete e garantia antes de fechar.", tags: ["Gadgets", "Acessórios", "Casa inteligente"], whatsappUrl: "https://chat.whatsapp.com/GEI5ZeFK1YyEtMhnGmQL01" },
-  { id: "style", label: "Estilo & cuidado", icon: Heart, eyebrow: "ESTILO & AUTOCUIDADO", title: "Seu cuidado também pode caber no bolso.", copy: "Achadinhos de moda, beleza e autocuidado com espaço para comparar preço, tamanho e avaliação.", tags: ["Moda", "Beleza", "Autocuidado"], whatsappUrl: "https://chat.whatsapp.com/DUGPpiboUYf8HVBhEYdFSy" },
+  { id: "mens", label: "Moda masculina", icon: Shirt, eyebrow: "MODA MASCULINA", title: "Estilo masculino com compra inteligente.", copy: "Roupas, calçados e acessórios masculinos selecionados com atenção a preço, qualidade e procedência.", tags: ["Roupas", "Calçados", "Acessórios"], whatsappUrl: "https://chat.whatsapp.com/Leu1hPNqzhL6FfIdIaoFBs" },
+  { id: "womens", label: "Moda feminina", icon: Heart, eyebrow: "MODA FEMININA", title: "Moda feminina com qualidade e economia.", copy: "Oportunidades em roupas, calçados e acessórios femininos, filtradas para você comparar e escolher com confiança.", tags: ["Roupas", "Calçados", "Acessórios"], whatsappUrl: "https://chat.whatsapp.com/DUGPpiboUYf8HVBhEYdFSy" },
   { id: "fitness", label: "Fitness & bem-estar", icon: Zap, eyebrow: "ROTINA EM MOVIMENTO", title: "Mais rotina. Menos compra no impulso.", copy: "Equipamentos, acessórios e itens de bem-estar. Em suplementos, confira fabricante, rótulo e procedência.", tags: ["Treino", "Bem-estar", "Suplementos"], whatsappUrl: "https://chat.whatsapp.com/DUUexM31KIcGHMs87F2ibs" },
 ]
 
@@ -30,7 +31,7 @@ function MainContent() {
     <div className="announcement"><span className="announcement-dot" /> CURADORIA DE OFERTAS · COMPRA COM MAIS INTENÇÃO <span className="announce-divider">/</span> <span className="announce-code">APX—001</span></div>
     <header className="topbar">
       <a href="#inicio" className="brand" aria-label="Apex Offers Club, início"><span className="brand-icon">A<span>×</span></span><span className="brand-name">APEX <b>OFFERS CLUB</b></span></a>
-      <nav className="topnav" aria-label="Navegação principal"><a href="#radar">Seu radar</a><a href="#manifesto">O método</a><a href="#faq">FAQ</a><ThemeToggle /><a className="nav-cta" href={activeInterest.whatsappUrl} target="_blank" rel="noreferrer">Entrar em {activeInterest.label} <ArrowRight size={14} /></a></nav>
+      <nav className="topnav" aria-label="Navegação principal"><a href="#radar">Seu radar</a><a href="#manifesto">O método</a><a href="#faq">FAQ</a><ThemeToggle /><div className="social-nav" aria-label="Redes sociais"><a className="social-link" href={profileData.socials.instagram} target="_blank" rel="noreferrer" aria-label="Instagram da APEX" title="Instagram"><InstagramIcon className="social-icon" /></a><a className="social-link" href={profileData.socials.tiktok} target="_blank" rel="noreferrer" aria-label="TikTok da APEX" title="TikTok"><TikTokIcon className="social-icon" /></a></div><a className="nav-cta" href={activeInterest.whatsappUrl} target="_blank" rel="noreferrer">Entrar em {activeInterest.label} <ArrowRight size={14} /></a></nav>
       <a className="mobile-menu" href="#radar" aria-label="Ir para categorias"><Menu size={20} /></a>
     </header>
 
@@ -83,7 +84,7 @@ function MainContent() {
       <section className="final-cta"><div className="cta-grid"/><span className="cta-overline">A COMUNIDADE APEX ESTÁ A UM CLIQUE</span><h2>Menos caça.<br /><em>Mais achado.</em></h2><p>Entre no grupo e acompanhe as próximas oportunidades.</p><a href={activeInterest.whatsappUrl} target="_blank" rel="noreferrer" className="button-light"><WhatsAppIcon className="w-5 h-5" /> Entrar em {activeInterest.label} <ArrowRight size={17} /></a><span className="cta-foot">Preço, estoque e condições podem mudar na loja.</span></section>
     </main>
 
-    <footer className="footer"><a className="footer-brand" href="#inicio"><span className="brand-icon">A<span>×</span></span> APEX OFFERS CLUB</a><p>Comprar com intenção muda o jogo.</p><div className="footer-bottom"><span>© {new Date().getFullYear()} APEX OFFERS CLUB</span><a href={profileData.socials.instagram} target="_blank" rel="noreferrer"><InstagramIcon className="w-4 h-4" /> Instagram</a><span className="footer-slogan">NO TOPO COM FACILIDADE.</span></div></footer>
+    <footer className="footer"><a className="footer-brand" href="#inicio"><span className="brand-icon">A<span>×</span></span> APEX OFFERS CLUB</a><p>Comprar com intenção muda o jogo.</p><div className="footer-bottom"><span>© {new Date().getFullYear()} APEX OFFERS CLUB</span><a href={profileData.socials.instagram} target="_blank" rel="noreferrer"><InstagramIcon className="w-4 h-4" /> Instagram</a><a href={profileData.socials.tiktok} target="_blank" rel="noreferrer"><TikTokIcon className="w-4 h-4" /> TikTok</a><span className="footer-slogan">NO TOPO COM FACILIDADE.</span></div></footer>
     <a className="mobile-sticky-cta group-join" href={activeInterest.whatsappUrl} target="_blank" rel="noreferrer"><WhatsAppIcon className="w-5 h-5" /> <span>Entrar no grupo</span><b>{activeInterest.label}</b><ArrowRight className="group-join-arrow" size={16}/></a>
   </div>
 }

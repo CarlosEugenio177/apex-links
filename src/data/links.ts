@@ -27,7 +27,8 @@ export const profileData: ProfileData = {
   bio: "No topo com facilidade.",
   logoUrl: "/apex_logo.svg",
   socials: {
-    instagram: "https://instagram.com/apexclubedeofertas",
+    instagram: "https://www.instagram.com/clube_apex?vrfl=Z25ldHYwaXUwaWQz&utm_source=qr",
+    tiktok: "https://www.tiktok.com/@apexclubeodefertas?_r=1&_t=ZS-9AvoDuQ8CPZ",
   },
 }
 
